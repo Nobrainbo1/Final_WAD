@@ -91,10 +91,13 @@ export default function CustomerPage() {
   }
 
   function startEditMode(customer) {
+    // Convert the date back to YYYY-MM-DD format for the input field
+    const dateForInput = new Date(customer.dateOfBirth).toISOString().split('T')[0];
+    
     reset({
       _id: customer._id,
       name: customer.name,
-      dateOfBirth: customer.dateOfBirth.split('T')[0],
+      dateOfBirth: dateForInput,
       memberNumber: customer.memberNumber,
       interests: customer.interests
     });
